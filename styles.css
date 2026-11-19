@@ -489,6 +489,9 @@ body {
     transition:
         color 0.2s,
         border-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .sub-item-link:hover {
