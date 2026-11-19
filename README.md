@@ -2,6 +2,8 @@
 
 Lista de tareas con estética de vidrio esmerilado, modo claro y oscuro, y diseño adaptable a escritorio y celular.
 
+**[Ver demo en vivo →](https://carlosluismolinaramirez.github.io/taskflow/)**
+
 ![Vista de escritorio en modo oscuro](design/escritorio-oscuro.png)
 
 ## Características
@@ -38,7 +40,9 @@ La paleta completa, la tipografía y las medidas están en la [ficha de diseño]
 
 ## Cómo verlo
 
-Cloná el repositorio y abrí `index.html` en el navegador:
+Probalo directamente en el navegador: [carlosluismolinaramirez.github.io/taskflow](https://carlosluismolinaramirez.github.io/taskflow/)
+
+O cloná el repositorio y abrí `index.html`:
 
 ```bash
 git clone https://github.com/CarlosLuisMolinaRamirez/taskflow.git
