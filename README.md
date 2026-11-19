@@ -61,6 +61,7 @@ taskflow/
 ## Roadmap
 
 - [x] **v1.0** — Diseño completo con HTML y CSS
+- [x] **v1.1** — Accesibilidad: contraste WCAG AA, links con ícono y aviso de pestaña nueva
 - [ ] **v2.0** — Agregar, editar y eliminar tareas, barra de progreso y botón de tema claro u oscuro (JavaScript)
 - [ ] **v3.0** — Guardar las tareas en el navegador con `localStorage`
 
