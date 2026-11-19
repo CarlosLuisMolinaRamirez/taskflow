@@ -9,7 +9,7 @@
     --circle: linear-gradient(160deg, #f0abfc, #c084fc);
 
     /* Vidrio */
-    --glass: rgba(22, 16, 40, 0.62);
+    --glass: rgba(22, 16, 40, 0.72);
     --glass-border: rgba(255, 255, 255, 0.12);
     --shadow: 0 30px 80px rgba(8, 4, 24, 0.6);
 
@@ -22,8 +22,8 @@
     /* Texto */
     --text: #f5f3ff;
     --text-2: #b9b0d6;
-    --text-done: #948bb3;
-    --placeholder: #8f86ad;
+    --text-done: #b4abd1;
+    --placeholder: #b4abd1;
 
     /* Acentos */
     --accent: #c084fc;
@@ -64,9 +64,9 @@
     --hover-strong: rgba(0, 0, 0, 0.06);
 
     --text: #1d1d1f;
-    --text-2: #6e6e73;
-    --text-done: #737378;
-    --placeholder: #8e8e93;
+    --text-2: #636366;
+    --text-done: #636366;
+    --placeholder: #636366;
 
     --accent: #0a84ff;
     --accent-2: #5e5ce6;
