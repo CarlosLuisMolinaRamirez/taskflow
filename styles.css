@@ -1,0 +1,600 @@
+/* ===== Variables: modo oscuro (por defecto) ===== */
+:root {
+    /* Fondo */
+    --bg: #120a2a;
+    --bg-glow: #2a1460;
+    --star: rgba(255, 255, 255, 0.75);
+    --blob-1: linear-gradient(140deg, #c084fc, #6366f1);
+    --blob-2: linear-gradient(200deg, #6366f1, #c084fc);
+    --circle: linear-gradient(160deg, #f0abfc, #c084fc);
+
+    /* Vidrio */
+    --glass: rgba(22, 16, 40, 0.62);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --shadow: 0 30px 80px rgba(8, 4, 24, 0.6);
+
+    /* Superficies y bordes */
+    --surface: rgba(255, 255, 255, 0.04);
+    --surface-border: rgba(255, 255, 255, 0.08);
+    --hover: rgba(255, 255, 255, 0.04);
+    --hover-strong: rgba(255, 255, 255, 0.08);
+
+    /* Texto */
+    --text: #f5f3ff;
+    --text-2: #b9b0d6;
+    --text-done: #948bb3;
+    --placeholder: #8f86ad;
+
+    /* Acentos */
+    --accent: #c084fc;
+    --accent-2: #6366f1;
+    --ring: rgba(192, 132, 252, 0.28);
+    --check-border: #6b6390;
+    --button: linear-gradient(135deg, #9333ea, #4f46e5);
+
+    /* Enlaces */
+    --link: #c4b5fd;
+    --link-hover: #e4dcff;
+
+    /* Etiquetas */
+    --chip-violet-bg: rgba(192, 132, 252, 0.16);
+    --chip-violet-text: #e4dcff;
+    --chip-pink-bg: rgba(244, 114, 182, 0.18);
+    --chip-pink-text: #fbcfe8;
+    --chip-neutral-bg: rgba(255, 255, 255, 0.08);
+    --chip-neutral-text: #d4cee8;
+}
+
+/* ===== Variables: modo claro ===== */
+.light {
+    --bg: #dce6f7;
+    --bg-glow: rgba(255, 255, 255, 0.55);
+    --star: transparent;
+    --blob-1: linear-gradient(140deg, #8fb4ff, #c9bbff);
+    --blob-2: linear-gradient(200deg, #f6b8d3, #c9bbff);
+    --circle: linear-gradient(160deg, #ffd6e8, #a8c8ff);
+
+    --glass: rgba(255, 255, 255, 0.45);
+    --glass-border: rgba(255, 255, 255, 0.7);
+    --shadow: 0 24px 60px rgba(30, 40, 80, 0.18);
+
+    --surface: rgba(255, 255, 255, 0.65);
+    --surface-border: rgba(0, 0, 0, 0.06);
+    --hover: rgba(0, 0, 0, 0.035);
+    --hover-strong: rgba(0, 0, 0, 0.06);
+
+    --text: #1d1d1f;
+    --text-2: #6e6e73;
+    --text-done: #737378;
+    --placeholder: #8e8e93;
+
+    --accent: #0a84ff;
+    --accent-2: #5e5ce6;
+    --ring: rgba(10, 132, 255, 0.25);
+    --check-border: #c7c7cc;
+    --button: linear-gradient(135deg, #0066cc, #4f46e5);
+
+    --link: #0066cc;
+    --link-hover: #004c99;
+
+    --chip-violet-bg: rgba(94, 92, 230, 0.12);
+    --chip-violet-text: #3634a3;
+    --chip-pink-bg: rgba(255, 45, 85, 0.12);
+    --chip-pink-text: #b3173b;
+    --chip-neutral-bg: rgba(0, 0, 0, 0.06);
+    --chip-neutral-text: #48484a;
+}
+
+/* ===== Base ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+
+    /* Estrellas y brillo central */
+    background-image:
+        radial-gradient(1.5px 1.5px at 12% 18%, var(--star), transparent),
+        radial-gradient(1px 1px at 28% 72%, var(--star), transparent),
+        radial-gradient(1.5px 1.5px at 46% 10%, var(--star), transparent),
+        radial-gradient(1px 1px at 63% 58%, var(--star), transparent),
+        radial-gradient(1.5px 1.5px at 81% 34%, var(--star), transparent),
+        radial-gradient(1px 1px at 92% 80%, var(--star), transparent),
+        radial-gradient(circle at 50% 40%, var(--bg-glow), transparent 60%);
+    background-attachment: fixed;
+    /* Centrar la ventana */
+    padding: 72px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+/* ===== Fondo decorativo ===== */
+.blob,
+.circle {
+    position: fixed;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.blob {
+    opacity: 0.85;
+}
+
+.blob-1 {
+    width: 640px;
+    height: 540px;
+    top: -140px;
+    left: calc(50% - 820px);
+    background: var(--blob-1);
+    border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
+}
+
+.blob-2 {
+    width: 600px;
+    height: 620px;
+    left: calc(50% + 120px);
+    bottom: -240px;
+    background: var(--blob-2);
+    border-radius: 58% 42% 38% 62% / 52% 61% 39% 48%;
+}
+
+.circle {
+    width: 180px;
+    height: 180px;
+    top: 60px;
+    left: calc(50% + 180px);
+    border-radius: 50%;
+    background: var(--circle);
+}
+
+/* ===== Ventana ===== */
+.window {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 560px;
+    background: var(--glass);
+    backdrop-filter: blur(28px) saturate(160%);
+    -webkit-backdrop-filter: blur(28px) saturate(160%);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+/* Barra de título */
+.titlebar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 44px;
+    padding: 0 16px;
+    border-bottom: 1px solid var(--surface-border);
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.dot-red {
+    background: #ff5f57;
+}
+
+.dot-yellow {
+    background: #febc2e;
+}
+
+.dot-green {
+    background: #28c840;
+}
+
+.titlebar-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    pointer-events: none;
+}
+
+/* Contenido */
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 28px 28px 32px;
+}
+
+/* ===== Encabezado ===== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.date {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-2);
+}
+
+.title {
+    margin: 0;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.counter {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-2);
+}
+
+/* Botón de tema */
+.theme-toggle {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--surface-border);
+    border-radius: 50%;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.theme-toggle:hover {
+    background: var(--hover-strong);
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* ===== Barra de progreso ===== */
+.progress {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--hover-strong);
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 25%;
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+/* ===== Utilidades ===== */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ===== Agregar tarea ===== */
+
+.composer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 6px 6px 14px;
+    background: var(--surface);
+    border: 1px solid var(--surface-border);
+    border-radius: 12px;
+    transition:
+        border-color 0.15s,
+        box-shadow 0.15s;
+}
+
+.composer:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--ring);
+}
+
+.composer-input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    font-size: 15px;
+}
+
+.composer-input::placeholder {
+    color: var(--placeholder);
+}
+
+.composer-button {
+    min-height: 44px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 10px;
+    background: var(--button);
+    color: #fff;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.composer-button:hover {
+    filter: brightness(1.12);
+}
+
+.composer-button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* ===== Lista de tareas ===== */
+.todo-list {
+    list-style: none;
+    margin: 0;
+    padding: 4px 0;
+    background: var(--surface);
+    border: 1px solid var(--surface-border);
+    border-radius: 12px;
+}
+
+.task {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 8px 14px 16px;
+}
+
+.task + .task {
+    border-top: 1px solid var(--surface-border);
+}
+.task:hover {
+    background: var(--hover);
+}
+
+/* Checkbox redondo */
+
+.task-check {
+    appearance: none;
+    flex-shrink: 0;
+    display: grid;
+    place-content: center;
+    width: 22px;
+    height: 22px;
+    margin: 1px 0 0;
+    border: 2px solid var(--check-border);
+    border-radius: 50%;
+    cursor: pointer;
+    transition:
+        background 0.15s,
+        border-color 0.15s;
+}
+
+.task-check:checked {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    border-color: transparent;
+}
+
+.task-check:checked::after {
+    content: "";
+    width: 5px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: translateY(-1px) rotate(45deg);
+}
+
+.task-check:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* Cuerpo de la tarea */
+.task-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.task-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.task-label {
+    font-size: 16px;
+    line-height: 1.35;
+    cursor: pointer;
+}
+
+/* Tachado al marcar */
+
+.task-check:checked + .task-body .task-label {
+    color: var(--text-done);
+    text-decoration: line-through;
+}
+
+/* Etiquetas */
+
+.chip {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.6;
+    padding: 1px 8px;
+    border-radius: 999px;
+}
+
+.chip-violet {
+    background: var(--chip-violet-bg);
+    color: var(--chip-violet-text);
+}
+
+.chip-pink {
+    background: var(--chip-pink-bg);
+    color: var(--chip-pink-text);
+}
+
+.chip-neutral {
+    background: var(--chip-neutral-bg);
+    color: var(--chip-neutral-text);
+}
+
+/* Enlace al recurso */
+.sub-item {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sub-item-link {
+    font-size: 13px;
+    color: var(--link);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition:
+        color 0.2s,
+        border-color 0.2s;
+}
+
+.sub-item-link:hover {
+    color: var(--link-hover);
+    border-bottom-color: currentColor;
+}
+
+.sub-item-link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 3px;
+}
+
+/* Botones de editar y eliminar */
+.task-actions {
+    display: flex;
+    gap: 2px;
+    opacity: 0;
+    transition: opacity 0.15s;
+}
+
+.task:hover .task-actions,
+.task:focus-within .task-actions {
+    opacity: 1;
+}
+
+.icon-button {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin: -11px 0;
+    padding: 0;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--text-2);
+    cursor: pointer;
+}
+
+.icon-button:hover {
+    background: var(--hover-strong);
+    color: var(--text);
+}
+
+.icon-button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+}
+
+/* ===== Pantallas táctiles ===== */
+@media (hover: none) {
+    .task-actions {
+        opacity: 1;
+    }
+}
+
+/* ===== Versión móvil ===== */
+@media (max-width: 600px) {
+    body {
+        padding: 16px 12px;
+    }
+
+    .titlebar {
+        display: none;
+    }
+
+    .content {
+        padding: 22px 16px 24px;
+    }
+
+    .title {
+        font-size: 30px;
+    }
+
+    .task {
+        gap: 12px;
+        padding: 14px 4px 14px 12px;
+    }
+
+    .composer {
+        flex-wrap: wrap;
+        padding: 8px;
+    }
+
+    .composer-input {
+        flex-basis: 100%;
+        padding: 8px 6px;
+    }
+
+    .composer-button {
+        width: 100%;
+    }
+}
+/* ===== Pantallas bajas (celular en horizontal) ===== */
+@media (max-height: 500px) {
+    body {
+        padding: 16px 24px;
+    }
+
+    .titlebar {
+        display: none;
+    }
+
+    .content {
+        gap: 16px;
+        padding: 20px 24px 24px;
+    }
+}
